@@ -29,5 +29,5 @@ Install-ADDSForest `
 
 "Done" | Out-File $MarkerFilename
 
-Write-Host "Start sleeping until reboot to prevent vagrant connection failures..."
-Start-Sleep 180
+#Write-Host "Start sleeping until reboot to prevent vagrant connection failures..."
+#Start-Sleep 180

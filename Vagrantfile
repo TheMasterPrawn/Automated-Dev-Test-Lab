@@ -16,14 +16,13 @@ Vagrant.configure("2") do |config|
     dc01.winrm.password = "vagrant"
     dc01.vm.network "private_network", ip: "192.168.10.2"
     dc01.vm.provision "shell", path: "ps1/Setup-CommonTools.ps1"
-    dc01.vm.provision "shell", path: "ps1/Install-DC.ps1"
-    dc01.vm.provision "shell", path: "ps1/Setup-DC.ps1"
+    #dc01.vm.provision "shell", path: "ps1/Install-DC.ps1"
+    #dc01.vm.provision "shell", path: "ps1/Setup-DC.ps1"
     dc01.vm.provider "VirtualBox" do |vb|
-      vb.memory = 2048
+      vb.memory = 1024
       vb.cpus = 2
       #vb.customize ["modifyvm", :id, "--boot1", "disk", "--boot2", "dvd"]
       vb.storage :file, :device => :cdrom, :bus => :ide, :type => :raw, :path => "C:\\vm\\Server2kR2.ISO"
-
     end
   end
 
@@ -39,9 +38,20 @@ Vagrant.configure("2") do |config|
     dsc.vm.provider "VirtualBox" do |vb|
       vb.memory = 2048
       vb.cpus = 2
-      vb.customize ["modifyvm", :id, "--boot1", "disk", "--boot2", "dvd"]
     end
   end
 
+  config.vm.define "webserver01" do |web01|
+    web01.vm.box = "mwrock/Windows2012R2"
+    web01.vm.hostname = "windows-webserver01"
+    web01.vm.communicator = "winrm"
+    web01.winrm.username = "vagrant"
+    web01.winrm.password = "vagrant"
+    web01.vm.network "private_network", ip: "192.168.10.4"
+    web01.vm.provider "VirtualBox" do |vb|
+      vb.memory = 2048
+      vb.cpus = 2
+    end
+  end
 
 end
