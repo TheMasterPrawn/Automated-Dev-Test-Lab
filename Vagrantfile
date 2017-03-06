@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
     dsc.vm.network "private_network", ip: "192.168.10.3"
     dsc.vm.provision "shell", path: "ps1/Setup-CommonTools.ps1"
     dsc.vm.provider "VirtualBox" do |vb|
-      vb.memory = 2048
+      vb.memory = 1024
       vb.cpus = 2
     end
   end
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
     web01.winrm.password = "vagrant"
     web01.vm.network "private_network", ip: "192.168.10.4"
     web01.vm.provider "VirtualBox" do |vb|
-      vb.memory = 2048
+      vb.memory = 1024
       vb.cpus = 2
     end
   end
