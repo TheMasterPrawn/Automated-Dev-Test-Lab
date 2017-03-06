@@ -24,7 +24,6 @@ Vagrant.configure("2") do |config|
       vb.customize ["storageattach ", :id, "--storagectl ", "IDE", "--port", "0", "--device", "1", "--type", "dvddrive", "--medium", "C:\\vm\\Server2kR2.ISO"]
       # VBoxManage.exe storagectl "domain_DomainController1_1488791279194_72311" --name IDE --add ide
       # VBoxManage.exe storageattach "domain_DomainController1_1488791279194_72311" --storagectl IDE --port 0 --device 1 --type dvddrive --medium "C:\vm"
-
     end
   end
 
