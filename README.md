@@ -3,7 +3,7 @@
 
 To build a simple lab using Vagrant, VirtualBox, Chocolately and PowerShell to do some test and dev.
 
-Using Get-ToolsForENV.ps1 will install chocately and the packages needed to run the dev/test environment.
+# Technologies
 
 [Vagrant](https://www.vagrantup.com/ "Title")
 
@@ -16,6 +16,10 @@ Using Get-ToolsForENV.ps1 will install chocately and the packages needed to run 
 [Chocolately](https://www.virtualbox.org "Title")
 
 *"Chocolatey is a package manager for Windows (like apt-get or yum but for Windows). It was designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure currently using PowerShell as its focus for delivering packages from the distros to your computer."*
+
+# Setup
+
+Using Get-ToolsForENV.ps1 will install chocately and the packages needed to run the dev/test environment.
 
 As well as a NAT Interface in VirtualBox you will need to add an inernal only interface and take note of the IP range. I used 192.168.10.X. This is important as you will need to specify the IP addresses of your servers for Vagrant.
 
