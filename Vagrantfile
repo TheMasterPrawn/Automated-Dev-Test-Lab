@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
       vb.memory = 1024
       vb.cpus = 2
       vb.customize ["storageattach ", :id, "--storagectl ", "IDE", "--port", "0", "--device", "1", "--type", "dvddrive", "--medium", "C:\\vm\\Server2kR2.ISO"]
+      # Virtual box settings, does not work on windows, needs work.
       # VBoxManage.exe storagectl "domain_DomainController1_1488791279194_72311" --name IDE --add ide
       # VBoxManage.exe storageattach "domain_DomainController1_1488791279194_72311" --storagectl IDE --port 0 --device 1 --type dvddrive --medium "C:\vm"
     end
