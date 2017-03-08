@@ -8,9 +8,9 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define "DomainController1" do |dc01|
-    #dc01.vm.box = "jptoto/Windows2012R2"
+    dc01.vm.box = "jptoto/Windows2012R2"
     dc01.vm.hostname = "DC01"
-    dc01.vm.box = "mwrock/Windows2012R2"
+    #dc01.vm.box = "mwrock/Windows2012R2"
     dc01.vm.communicator = "winrm"
     dc01.winrm.username = "vagrant"
     dc01.winrm.password = "vagrant"
@@ -27,10 +27,10 @@ Vagrant.configure("2") do |config|
       # VBoxManage.exe storageattach "domain_DomainController1_1488791279194_72311" --storagectl IDE --port 0 --device 1 --type dvddrive --medium "C:\vm"
     end
   end
-
+=begin
   config.vm.define "DSCServer" do |dsc|
-    #dsc.vm.box = "jptoto/Windows2012R2"
-    dsc.vm.box = "mwrock/Windows2012R2"
+    dsc.vm.box = "jptoto/Windows2012R2"
+    #dsc.vm.box = "mwrock/Windows2012R2"
     dsc.vm.hostname = "DSC"
     dsc.vm.communicator = "winrm"
     dsc.winrm.username = "vagrant"
@@ -55,5 +55,5 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
     end
   end
-
+=end
 end
