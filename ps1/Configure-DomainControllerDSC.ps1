@@ -22,7 +22,7 @@
             
         File ADFiles            
         {            
-            DestinationPath = 'N:\NTDS'            
+            DestinationPath = 'C:\NTDS'            
             Type = 'Directory'            
             Ensure = 'Present'            
         }            
@@ -46,8 +46,8 @@
             DomainName = $Node.DomainName             
             DomainAdministratorCredential = $domainCred             
             SafemodeAdministratorPassword = $safemodeAdministratorCred            
-            DatabasePath = 'N:\NTDS'            
-            LogPath = 'N:\NTDS'            
+            DatabasePath = 'C:\NTDS'            
+            LogPath = 'C:\NTDS'            
             DependsOn = "[WindowsFeature]ADDSInstall","[File]ADFiles"            
         }            
             
@@ -67,12 +67,16 @@ $ConfigData = @{
         }            
     )             
 }             
+
+$secpasswd = ConvertTo-SecureString “P@ssword1” -AsPlainText -Force
+$safemodeAdminCred = New-Object System.Management.Automation.PSCredential (“(Password Only)”, $secpasswd)
+
+$secpasswd = ConvertTo-SecureString “P@ssword1” -AsPlainText -Force
+$domainCredential = New-Object System.Management.Automation.PSCredential (“corp\administrator”, $secpasswd)
             
 NewDomain -ConfigurationData $ConfigData `
-    -safemodeAdministratorCred (Get-Credential -UserName '(Password Only)' `
-        -Message "New Domain Safe Mode Administrator Password") `
-    -domainCred (Get-Credential -UserName alpineskihouse\administrator `
-        -Message "New Domain Admin Credential")            
+    -safemodeAdministratorCred $safemodeAdminCred `
+    -domainCred $domainCredential
             
 # Make sure that LCM is set to continue configuration after reboot            
 Set-DSCLocalConfigurationManager -Path .\NewDomain –Verbose            
